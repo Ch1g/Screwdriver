@@ -2,16 +2,13 @@ import consumer from "./consumer"
 
 document.addEventListener('turbolinks:load', () => {
 
-	const element = document.getElementById('room-id');
-	const room_id = element.getAttribute('data-room-id');
-
-	consumer.subscriptions.create({ channel: "PlaygroundChannel", room_id: room_id }, {
+	consumer.subscriptions.create({ channel: "PlaygroundChannel" }, {
 	  connected() {
-	  	console.log('connected to playground channel ' + room_id)
+	  	console.log('Connected to playground channel successfully. /~/~/~')
 	  },
 
 	  disconnected() {
-	    // Called when the subscription has been terminated by the server
+	  	console.log('Disconnected from playground channel successfully. /~/~/~')
 	  },
 
 	  received(data) {
