@@ -11,12 +11,10 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="input-group">
+    <%= form.text_field :content, placeholder: "Text here...", class: 'form-control' %>
+    <div class="input-group-append">
+      <%= form.submit "Add Message", class: 'btn btn-secondary' %>
+    </div>
   </div>
 <% end %>

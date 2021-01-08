@@ -1,15 +1,28 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-3">
-			<p>Hello, <%= current_user.username %></p>
-			<hr>
 		</div>
 		<div class="col-9">
 			<div class="chat">
-			<p>Enjoy chatting!</p>
-			<hr>
+			<nav class="navbar navbar-light bg-secondary mb-4">
+				<span class="navbar-brand">Чатрума</span>
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						Алоха, <%= current_user.username %>!
+					</li>
+				</ul>
+			</nav>
 			<% Message.last(50).each do |message| %>
-				<p><%= "#{message.user.username}: #{message.content} - #{message.created_at.strftime("at %r")}" %></p>
+				<div class="message mb-3  <%= 'me' if message.user == current_user %>">
+					<div class="content-container">
+					  	<div class="content">
+							<%= message.content %>
+						</div>
+						<div class="author">
+							<%= message.user.username %>
+						</div>
+					</div>
+				</div>
 			<% end %>
 			<div class="chat-box">
 				<%= render 'messages/form', message: Message.new %>
