@@ -1,3 +1,21 @@
-<h1>Landing#index</h1>
-<p>Find me in app/views/landing/index.html.erb</p>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-3">
+			<p>Hello, <%= current_user.username %></p>
+			<hr>
+		</div>
+		<div class="col-9">
+			<div class="chat">
+			<p>Enjoy chatting!</p>
+			<hr>
+			<% Message.last(50).each do |message| %>
+				<p><%= "#{message.user.username}: #{message.content} - #{message.created_at.strftime("at %r")}" %></p>
+			<% end %>
+			<div class="chat-box">
+				<%= render 'messages/form', message: Message.new %>
+			</div>
 
+			</div>
+		</div>
+	</div>
+</div>
