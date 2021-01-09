@@ -1,3 +1,5 @@
+<div id="user-id" data-user-id="<%= current_user.id %>"></div>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-3">
@@ -12,18 +14,11 @@
 					</li>
 				</ul>
 			</nav>
-			<% Message.last(50).each do |message| %>
-				<div class="message mb-3  <%= 'me' if message.user == current_user %>">
-					<div class="content-container">
-					  	<div class="content">
-							<%= message.content %>
-						</div>
-						<div class="author">
-							<%= message.user.username %>
-						</div>
-					</div>
-				</div>
-			<% end %>
+			<div id="messages">
+				<% Message.last(50).each do |message| %>
+					<%= render 'messages/message', message: message %>
+				<% end %>
+			</div>
 			<div class="chat-box">
 				<%= render 'messages/form', message: Message.new %>
 			</div>
