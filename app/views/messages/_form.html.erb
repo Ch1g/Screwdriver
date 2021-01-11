@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="input-group">
-    <%= form.text_field :content, placeholder: "Text here...", class: 'form-control', id: 'message-box' %>
+    <%= form.text_field :content, placeholder: "Text here...", class: 'form-control', required: 'required', id: 'message-box' %>
     <div class="input-group-append">
       <%= form.submit "Add Message", class: 'btn btn-secondary'%>
     </div>

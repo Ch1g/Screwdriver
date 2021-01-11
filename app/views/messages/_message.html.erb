@@ -3,7 +3,7 @@
 		<div class="content">
 			<%= message.content %>
 		</div>
-		<div class="author">
+		<div class=<%= message.user == current_user ? "yourself" : "author" %>>
 			<%= message.user.username %>
 		</div>
 	</div>
