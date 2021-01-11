@@ -30,9 +30,7 @@ body {
 		overflow-y: scroll;
 		scrollbar-width: none;
 		-ms-overflow-style: none;
-		padding-right: 10px;
-		padding-left: 10px;
-		padding-top: 10px;
+		padding: 10px;
 	}
 
 	.message {
@@ -42,7 +40,7 @@ body {
 			display: inline-block;
 			.content {
 				background-color: #FF8C00;
-				padding: 8px 16px;
+				padding: 6px 16px;
 				border-radius: 20px;
 			}
 
@@ -76,7 +74,6 @@ body {
 		position: absolute;
 		background: linear-gradient(135deg, rgba(103,112,119,1) 0%, rgba(211,211,211,1) 100%);	
 		padding: 25px;
-		bottom: 0px;
 		width: 100%;
 		box-shadow:  -5px -5px 5px 0px #333;
 
