@@ -113,8 +113,10 @@ body {
 
 .game {
 	height: 100px;
-	display: flex;
-	align-items: center;
+	background-size: auto;
+	background-repeat: no-repeat;
+	background-position: center;
+	display: block;
 }
 
 .game:hover {
