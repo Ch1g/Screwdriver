@@ -89,14 +89,35 @@ body {
 	}
 }
 
-.rooms-sidebar {
+.games-sidebar {
   z-index: 1;
 }
 
 .card.no-outline {
 	margin: 10px;
-	box-shadow:  0px 10px 10px 0px #333;
 	border-radius: 0;
 	background-color: var(--gray-dark);
 	color: #fff;
+}
+
+.usercard {
+	box-shadow:  0px 10px 10px 0px #333;
+}
+
+.games {
+	overflow-y: auto;
+	max-height: calc(100vh - 7rem);
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.game {
+	height: 100px;
+	display: flex;
+	align-items: center;
+}
+
+.game:hover {
+	transform: scale(1.025);
+	box-shadow:  0px 10px 10px 0px #333;
 }

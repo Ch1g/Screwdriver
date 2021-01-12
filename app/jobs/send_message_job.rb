@@ -11,6 +11,6 @@ class SendMessageJob < ApplicationJob
       locals: { message: message })
 
 
-    ActionCable.server.broadcast "playground_channel", mine: mine, theirs: theirs, message: message
+    ActionCable.server.broadcast "lobby_channel", mine: mine, theirs: theirs, message: message
   end
 end
