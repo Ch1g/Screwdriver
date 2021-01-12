@@ -1,14 +1,14 @@
 import consumer from "./consumer";
 
 consumer.subscriptions.create(
-  { channel: "PlaygroundChannel" },
+  { channel: "LobbyChannel" },
   {
     connected() {
-      console.log("Connected to playground channel successfully. /~/~/~");
+      console.log("Connected to lobby channel successfully. /~/~/~");
     },
 
     disconnected() {
-      console.log("Disconnected from playground channel successfully. /~/~/~");
+      console.log("Disconnected from lobby channel successfully. /~/~/~");
     },
 
     received(data) {
