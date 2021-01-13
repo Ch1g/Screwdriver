@@ -1,5 +1,5 @@
 
-
+// remove page scrollbar
 body {
 	overflow-y: hidden;
 	::-webkit-scrollbar {
@@ -8,15 +8,18 @@ body {
 	-ms-overflow-style: none;
 }
 
+// remove annoying indents from whole page
 .col-3, .col-9 {
 	padding-left: 0px;
 	padding-right: 0px;
 }
 
+// side-bar gradient
 .col-3 {
 	background: linear-gradient(135deg, rgba(52,58,64,1) 0%, rgba(112,120,127,1) 100%);
 }
 
+// fixed navbar shadow and gradient
 .navbar {
 	box-shadow: -5px 5px 10px 0px #333;
 	background: linear-gradient(135deg, rgba(71,78,85,1) 0%, rgba(155,160,163,1) 100%);
@@ -24,7 +27,7 @@ body {
 
 .chat {
 	height: 100vh;
-
+	// chat window
 	#messages {
 		height: calc(100% - 140px);
 		overflow-y: scroll;
@@ -32,7 +35,7 @@ body {
 		-ms-overflow-style: none;
 		padding: 10px;
 	}
-
+	// message bubbles
 	.message {
 		min-height: 59px;
 
@@ -69,7 +72,7 @@ body {
 			}
 		}
 	}
-
+	// fixed chatbox div
 	.chat-box {
 		position: absolute;
 		background: linear-gradient(135deg, rgba(103,112,119,1) 0%, rgba(211,211,211,1) 100%);	
@@ -88,22 +91,24 @@ body {
 	 	}
 	}
 }
-
+// overlaying shadows
 .games-sidebar {
   z-index: 1;
 }
-
+// welcome card and game cards styling
 .card.no-outline {
 	margin: 10px;
-	border-radius: 0;
+	border-style: none;
 	background-color: var(--gray-dark);
 	color: #fff;
 }
 
+// welcome card shadow
 .usercard {
 	box-shadow:  0px 10px 10px 0px #333;
 }
 
+// games list scrollbar
 .games {
 	overflow-y: auto;
 	max-height: calc(100vh - 7rem);
@@ -111,6 +116,7 @@ body {
 	-ms-overflow-style: none;
 }
 
+// game card options
 .game {
 	height: 100px;
 	background-size: auto;
@@ -118,7 +124,7 @@ body {
 	background-position: center;
 	display: block;
 }
-
+// game card scaling effect on hover
 .game:hover {
 	transform: scale(1.025);
 	box-shadow:  0px 10px 10px 0px #333;
