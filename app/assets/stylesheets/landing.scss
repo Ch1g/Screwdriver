@@ -22,7 +22,7 @@
 
 // fixed navbar shadow and gradient
 .navbar {
-	box-shadow: -5px 5px 10px 0px #333;
+	box-shadow: -5px 5px 10px 0px rgba(0,0,0,0.4);
 	background: linear-gradient(135deg, rgba(71,78,85,1) 0%, rgba(155,160,163,1) 100%);
 }
 
@@ -79,7 +79,7 @@
 		background: linear-gradient(135deg, rgba(103,112,119,1) 0%, rgba(211,211,211,1) 100%);	
 		padding: 25px;
 		width: 100%;
-		box-shadow:  -5px -5px 5px 0px #333;
+		box-shadow:  -5px -5px 5px 0px rgba(0,0,0,0.4);
 
 		input[type=text] {
 			height: 45px;
@@ -89,6 +89,7 @@
 
 		.btn {
 			height: 45px;
+			z-index: 0;
 	 	}
 	}
 }
@@ -107,7 +108,7 @@
 
 // welcome card shadow
 .usercard {
-	box-shadow:  0px 10px 10px 0px #333;
+	box-shadow:  0px 10px 10px 0px rgba(0,0,0,0.4);
 }
 
 // games list scrollbar
@@ -116,24 +117,23 @@
 	max-height: calc(100vh - 7.5rem);
 	scrollbar-width: none;
 	-ms-overflow-style: none;
-}
 
-// game card options
-.gamecard {
-	height: 100px;
-	background-size: auto;
-	background-repeat: no-repeat;
-	background-position: center;
-	display: block;
-}
-// game card scaling effect on hover
-.gamecard:hover {
-	transform: scale(1.025);
-	box-shadow:  0px 10px 10px 0px #333;
+	// game card options
+	.gamecard {
+		height: 100px;
+		background-size: auto;
+		background-repeat: no-repeat;
+		background-position: center;
+		display: block;
+	}
+	// game card scaling effect on hover
+	.gamecard:hover {
+		transform: scale(1.025);
+		box-shadow:  0px 10px 10px 0px rgba(0,0,0,0.4);
+	}
 }
 
 // popover
-
 @keyframes gradient {
 	0% {
 		background-position: 50% 0%;
@@ -177,39 +177,64 @@
 }
 
 // modal window
-.modal {
+.native-modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
+  padding-top: 100px;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
 
-// modal content
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
+  	// animatetop
+	@keyframes animatetop {
+	  from {top: -300px; opacity: 0}
+	  to {top: 0; opacity: 1}
+	}
 
-// close button
+	// modal content
+	.native-modal-content {
+	  position: relative;
+	  margin: auto;
+	  width: 80%;
+	  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	  animation: animatetop 0.4s;
 
-.close {
-	color: #aaa;
-	float: right;
-	font-style: 28px;
-	font-weight: bold;
-}
+		// modal header
+		.native-modal-header {
+			background-color: var(--gray-dark);
+			color: #fff;
+			padding: 2px 16px;
 
-.close:hover, .close.focus {
-	color: black;
-	text-decoration: none;
-	cursor: pointer;
+			// close button
+			.native-close {
+				color: #aaa;
+				float: right;
+				margin-right: 5px;
+				font-size: 26px;
+				font-weight: bold;
+			}
+
+			.native-close:hover, .native-close.focus {
+				color: black;
+				text-decoration: none;
+				cursor: pointer;
+			}
+		}
+
+		// modal body
+		.native-modal-body { 
+			width: 100%;
+			background-color: #fff;
+			position: absolute;
+			padding: 2px 16px;
+			height: 50vh;
+			overflow-y: auto;
+			scrollbar-width: 1px;
+			-ms-overflow-style: none;
+		}
+	}
 }
