@@ -1,15 +1,29 @@
-import consumer from "./consumer"
+import consumer from "./consumer";
 
-consumer.subscriptions.create("GameRoomChannel", {
-  connected() {
-    // Called when the subscription is ready for use on the server
-  },
+// on page load
+window.addEventListener("load", (event) => {
+	// variables declaring
+	const element = document.getElementById("room-id");
+	// check existance of element
+	if (element) {
+		const room_id = +element.getAttribute("data-room-id");
+		consumer.subscriptions.create(
+			{ channel: "GameRoomChannel", room: room_id },
+			{
+				// log connection status to console
+				connected() {
+					console.log("Connected to room " + room_id);
+				},
 
-  disconnected() {
-    // Called when the subscription has been terminated by the server
-  },
+				disconnected() {
+					console.log("Disconnected from room " + room_id);
+				},
+				//
 
-  received(data) {
-    // Called when there's incoming data on the websocket for this channel
-  }
+				received(data) {
+					console.log(data);
+				},
+			}
+		);
+	}
 });
