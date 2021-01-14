@@ -23,6 +23,7 @@ class MessagesController < ApplicationController
 
   # POST /messages
   # POST /messages.json
+  # creating message and performing broadcasting job
   def create
     @message = Message.new(message_params)
     @message.user = current_user

@@ -1,7 +1,7 @@
 import consumer from "./consumer";
 
 // on page load
-window.addEventListener('load', (event) => {
+window.addEventListener("load", (event) => {
   // variables declaring
   const messageContainer = document.getElementById("messages");
   const element = document.getElementById("user-id");
@@ -9,7 +9,9 @@ window.addEventListener('load', (event) => {
   // scrolling chat to last message
   messageContainer.scrollTop = messageContainer.scrollHeight;
 
-  consumer.subscriptions.create({ channel: "LobbyChannel" }, {
+  consumer.subscriptions.create(
+    { channel: "LobbyChannel" },
+    {
       // log connection status to console
       connected() {
         console.log("Connected to lobby channel successfully. /~/~/~");
