@@ -13,7 +13,15 @@
 	        </div>
 	        <!-- games list -->
 		    <div class="games">
-		    	<div class="card no-outline gamecard" data-toogle="popover" title="Космические захватчики" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales scelerisque ante nec faucibus. Nunc vitae est ipsum. Sed justo ex, posuere ut nunc sit amet, ullamcorper volutpat ipsum. Nunc pretium turpis felis, quis venenatis dui iaculis vitae. Proin quis ipsum sodales, mollis lorem in, feugiat turpis. Aliquam nec elit dolor. Maecenas vitae ultrices leo." style="background: url(https://picsum.photos/330/103);"></div>
+		    	<!-- gamecard -->
+		    	<div class="card no-outline gamecard" id="card_1" onclick="showModal(this)" data-toogle="popover" title="Космические захватчики" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales scelerisque ante nec faucibus. Nunc vitae est ipsum. Sed justo ex, posuere ut nunc sit amet, ullamcorper volutpat ipsum. Nunc pretium turpis felis, quis venenatis dui iaculis vitae. Proin quis ipsum sodales, mollis lorem in, feugiat turpis. Aliquam nec elit dolor. Maecenas vitae ultrices leo." style="background: url(https://picsum.photos/330/103);"></div>
+		    	<!-- modal window -->
+		    	<div class="modal" id="modal_1">
+		    		<div class="modal-content">
+		    			<span class="close" id="close_1" onclick="closeModal(this)">&times;</span>
+		    			<p>some text</p>
+		    		</div>
+		    	</div>
 		    	
 		    </div>
 	  	</div>
