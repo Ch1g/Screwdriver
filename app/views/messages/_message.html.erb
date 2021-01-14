@@ -5,6 +5,7 @@
 		</div>
 		<div class=<%= message.user == current_user ? "yourself" : "author" %>>
 			<%= message.user.username %>
+			<%= message.created_at.strftime("%r") %>
 		</div>
 	</div>
 </div>
