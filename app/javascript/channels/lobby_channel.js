@@ -26,8 +26,6 @@ window.addEventListener("load", (event) => {
 
         // render broadcasted message to chat and scroll chat to last message
         received(data) {
-          console.log(data);
-
           let html;
 
           if (user_id === data.message.user_id) {

@@ -1,5 +1,8 @@
 import consumer from "./consumer";
+import goCrazy from "../games/crazy_button/crazy_button"
+export default window.gameRoomChannel;
 
+let gameRoomChannel;
 // on page load
 window.addEventListener("load", (event) => {
 	// variables declaring
@@ -7,7 +10,7 @@ window.addEventListener("load", (event) => {
 	// check existance of element
 	if (element) {
 		const room_id = +element.getAttribute("data-room-id");
-		consumer.subscriptions.create(
+		window.gameRoomChannel = consumer.subscriptions.create(
 			{ channel: "GameRoomChannel", room: room_id },
 			{
 				// log connection status to console
@@ -20,10 +23,15 @@ window.addEventListener("load", (event) => {
 				},
 				//
 
+				speak(game, render_data) {
+				    this.perform('speak', {game: game, render_data: render_data });
+				},
+
 				received(data) {
-					console.log(data);
+					window.goCrazy(data.render_data.offsetLeft, data.render_data.offsetTop);
 				},
 			}
 		);
 	}
 });
+

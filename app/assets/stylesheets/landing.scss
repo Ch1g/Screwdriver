@@ -183,7 +183,7 @@
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
-  padding-top: 80px;
+  padding-top: 0px;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
@@ -224,7 +224,7 @@
 				cursor: pointer;
 			}
 		}
-
+		// modal game description
 		.native-modal-description {
 				.btn {
 					border-radius: 0;
