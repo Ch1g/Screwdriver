@@ -1,9 +1,10 @@
-<section class="crazy-btn-game">
-    <button type="button" id="crazyButton" class="btn-crazy btn btn-lg btn-danger">
-    </button>
-    <a href="/" class="nes-btn is-warning home-btn">Home</a>
-</section>
+<% render_data = JSON.parse(GameRoom.find(params[:id]).score) %>
+<div class="crazy-btn-game">
+    <div type="button" id="crazyButton" style="left: <%= render_data["left"] %>%; top: <%= render_data["top"] %>%;" class="btn-crazy animated">
+    </div>
+    <a href="<%= landing_index_url %>" class="nes-btn is-warning home-btn">Home</a>
+</div>
 
 <script>
-    window.goCrazy();
+	startCrazyBtn();
 </script>

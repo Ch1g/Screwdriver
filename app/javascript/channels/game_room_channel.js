@@ -1,37 +1,29 @@
-import consumer from "./consumer";
-import goCrazy from "../games/crazy_button/crazy_button"
+import consumer from './consumer';
 export default window.gameRoomChannel;
 
 let gameRoomChannel;
-// on page load
-window.addEventListener("load", (event) => {
-	// variables declaring
-	const element = document.getElementById("room-id");
-	// check existance of element
-	if (element) {
-		const room_id = +element.getAttribute("data-room-id");
-		window.gameRoomChannel = consumer.subscriptions.create(
-			{ channel: "GameRoomChannel", room: room_id },
-			{
-				// log connection status to console
-				connected() {
-					console.log("Connected to room " + room_id);
-				},
 
-				disconnected() {
-					console.log("Disconnected from room " + room_id);
-				},
-				//
+window.roomConnection = function (roomId) {
+	// establishing conection
+	window.gameRoomChannel = consumer.subscriptions.create(
+		{ channel: 'GameRoomChannel', room: roomId },
+		{
+			// log connection status to console
+			connected() {
+				console.log('Connected to room ' + roomId);
+			},
 
-				speak(game, render_data) {
-				    this.perform('speak', {game: game, render_data: render_data });
-				},
+			disconnected() {
+				console.log('Disconnected from room ' + roomId);
+			},
+			//
 
-				received(data) {
-					window.goCrazy(data.render_data.offsetLeft, data.render_data.offsetTop);
-				},
-			}
-		);
-	}
-});
-
+			// broadcaster method
+			speak(render_data) {
+				this.perform('speak', {
+					render_data: JSON.stringify(render_data),
+				});
+			},
+		}
+	);
+};

@@ -1,28 +1,33 @@
-import gameRoomChannel from "../../channels/game_room_channel";
-export default window.goCrazy;
+import gameRoomChannel from '../../channels/game_room_channel';
 
-// on page load
-window.addEventListener("load", (event) => {
-	const homeBtn = document.querySelector('.home-btn');
+// game starter
+window.startCrazyBtn = function () {
+	// variables declaring
 	const crazyButton = document.getElementById('crazyButton');
+	const homeBtn = document.querySelector('.home-btn');
 
-
-
-	crazyButton.addEventListener('click', () => {
-	    window.gameRoomChannel.speak('Crazy', {
-	        offsetLeft: Math.random() * ((window.innerWidth - crazyButton.clientWidth) - 100),
-	        offsetTop: Math.random() * ((window.innerHeight - crazyButton.clientHeight) - 50)
-	    });
-	});
-
-	window.goCrazy = function(offLeft, offTop) {
-	    let top, left;
-
-	    left = offLeft;
-	    top = offTop;
-
-	    crazyButton.style.top = top + 'px';
-	    crazyButton.style.left = left + 'px';
-	    crazyButton.style.animation = "none";
+	// polymorphic creating function for connectionObject
+	window.gameRoomChannel.received = function (data) {
+		let offset = JSON.parse(data.render_data);
+		goCrazy(offset.left, offset.top);
 	};
-});
+
+	// event listener on click
+	crazyButton.addEventListener('click', () => {
+		window.gameRoomChannel.speak({
+			left: Math.random() * Math.floor(Math.random() * 100) + 1,
+			top: Math.random() * Math.floor(Math.random() * 100) + 1,
+		});
+	});
+};
+
+// render-function
+window.goCrazy = function (offLeft, offTop) {
+	let top, left;
+
+	left = offLeft;
+	top = offTop;
+
+	crazyButton.style.top = top + '%';
+	crazyButton.style.left = left + '%';
+};

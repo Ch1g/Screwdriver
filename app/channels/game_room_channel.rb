@@ -8,7 +8,7 @@ class GameRoomChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    ActionCable.server.broadcast "game_room_channel_#{params[:room]}", game: data["game"], render_data: data["render_data"]
+    ActionCable.server.broadcast "game_room_channel_#{params[:room]}", render_data: data["render_data"]
 
     @game_room = GameRoom.find(params[:room])
     @game_room.score = data["render_data"]
