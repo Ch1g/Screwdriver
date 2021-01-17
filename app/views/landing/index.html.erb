@@ -13,39 +13,45 @@
 	        </div>
 	        <!-- games list -->
 		    <div class="games">
+		    	<% Game.all.each do |game| %>
 		    	<!-- gamecard -->
-		    	<div class="card no-outline gamecard" id="card_1" onclick="showModal(this)" data-toogle="popover" title="Космические захватчики" data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales scelerisque ante nec faucibus. Nunc vitae est ipsum. Sed justo ex, posuere ut nunc sit amet, ullamcorper volutpat ipsum. Nunc pretium turpis felis, quis venenatis dui iaculis vitae. Proin quis ipsum sodales, mollis lorem in, feugiat turpis. Aliquam nec elit dolor. Maecenas vitae ultrices leo." style="background: url(https://picsum.photos/330/103);"></div>
+		    	<div class="card no-outline gamecard" id="card_<%= game.id %>" onclick="showModal(this)" data-toogle="popover" title="<%= game.title %>" data-content="<%= game.description %>" style="background: url(https://picsum.photos/330/103);"></div>
+		    	<!-- end gamecard -->
 		    	<!-- modal window -->
-		    	<div class="native-modal" id="modal_1">
+		    	<div class="native-modal" id="modal_<%= game.id %>">
 		    		<div class="native-modal-content">
 		    			<!-- modal header -->
 			    		<div class="native-modal-header">
-			    			<span class="native-close" id="close_1" onclick="closeModal(this)">&times;</span>
-			    			<h2 class="mb-0">Космические захватчики</h2>
+			    			<span class="native-close" id="close_<%= game.id %>" onclick="closeModal(this)">&times;</span>
+			    			<h2 class="mb-0"><%= game.title %></h2>
 			    		</div>
 			    		<!-- modal game description -->
 		    			<div class="native-modal-description">
 			    			<button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapse_1" aria-expanded="false" aria-controls="collapseExample">
 			    				Описание
 							</button>	
-			    			<div class="collapse" id="collapse_1">
+			    			<div class="collapse" id="collapse_<%= game.id %>">
 			    				<div class="card card-body">
-								    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales scelerisque ante nec faucibus. Nunc vitae est ipsum. Sed justo ex, posuere ut nunc sit amet, ullamcorper volutpat ipsum. Nunc pretium turpis felis, quis venenatis dui iaculis vitae.
+								    <%= game.description %>
 								</div>
 			    			</div>
 		    			</div>
 		    			<!-- modal room cards -->
+		    			<% game.game_rooms.each do |room| %>
 			    		<div class="native-modal-body">
 			    			<div class="room-cards">
-			    				<a class="card no-outline" href="somewhere">
-			    					Комната №1<br>
+			    				<a class="card no-outline" href="/game_room/<%= room.id %>">
+			    					Комната №<%= room.id %><br>
 			    					Участников: 999
 			    				</a	>
 			    			</div>
 			    		</div>
+			    		<% end %>
+			    		<!-- end modal room cards -->
 		    		</div>
 		    	</div>
 		    	<!-- end of modal window -->
+		    	<% end %>
 		    </div>
 	  	</div>
 	  	<!-- end of fixed sidebar -->
@@ -71,6 +77,7 @@
 
 <!-- popovers initializing -->
 <script>
+	lobbyConnection(<%= current_user.id %>);
 	$(document).ready(function(){
 	  $('[data-toggle="popover"]').popover();
 	});
