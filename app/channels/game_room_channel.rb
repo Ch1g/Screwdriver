@@ -4,14 +4,13 @@ class GameRoomChannel < ApplicationCable::Channel
   end
 
   def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
   end
 
   def speak(data)
     ActionCable.server.broadcast "game_room_channel_#{params[:room]}", render_data: data["render_data"]
 
     @game_room = GameRoom.find(params[:room])
-    @game_room.score = data["render_data"]
+    @game_room.render_data = data["render_data"]
     @game_room.save
   end
 end
