@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  helper_method :current_user
+  helper_method :current_user, :room_data
 
   def current_user
     return @current_user if @current_user.present?
@@ -12,6 +12,11 @@ class ApplicationController < ActionController::Base
       session[:user_id] = @current_user.id
       @current_user
     end
+  end
+
+  def room_data(room_id)
+    room = GameRoom.find(room_id)
+    { render_data: JSON.parse(room.render_data), players_score: JSON.parse(room.players_score) }
   end
 
 end
