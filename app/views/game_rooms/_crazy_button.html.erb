@@ -1,0 +1,10 @@
+<% data = room_data(params[:id])%>
+<div class="crazy-btn-game">
+    <div type="button" id="crazyButton" style="left: <%= data[:render_data]["left"] %>%; top: <%= data[:render_data]["top"] %>%;" class="btn-crazy animated">
+    </div>
+    <a href="<%= root_url %>" class="nes-btn is-warning home-btn">Home</a>
+</div>
+
+<script>
+	startCrazyBtn('<%= current_user.username %>');
+</script>

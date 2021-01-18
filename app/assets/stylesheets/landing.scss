@@ -219,20 +219,6 @@
 				cursor: pointer;
 			}
 		}
-		// modal game description
-		.native-modal-description {
-				.btn {
-					border-radius: 0;
-					width: 100%;
-					&:focus {
-						box-shadow: none;
-					}
-				}
-
-				.collapse .card.card-body, .collapse.show {
-					border-radius: 0;
-				}
-		}
 
 		// modal body
 		.native-modal-body { 
@@ -241,6 +227,18 @@
 			height: 60vh;
 			overflow-y: scroll;
 			-ms-overflow-style: none;
+
+			// description
+			.btn {
+				border-radius: 0;
+				width: 100%;
+				&:focus {
+					box-shadow: none;
+				}
+			}
+			.collapse .card.card-body, .collapse.show {
+				border-radius: 0;
+			}
 
 			.room-cards{
 				padding-top: 16px;

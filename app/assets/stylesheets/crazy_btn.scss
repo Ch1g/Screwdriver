@@ -9,9 +9,6 @@
     background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
     padding: 30px;
     height: 100vh;
-    .text-giant {
-        font-size: 40px;
-    }
     .btn-crazy {
         display: block;
         position: absolute;
@@ -27,59 +24,6 @@
     }  
     .animated {
         animation: gradient 0.5s ease infinite;
-    }
-    .time {
-        font-size: 60px;
-        position: absolute;
-        top: 30px;
-        left: 46%;
-        pointer-events: none;
-    }
-    .score {
-        font-size: 60px;
-        pointer-events: none;
-        border-bottom: 2px solid black;
-        padding-left: 10px;
-        padding-top: 10px;
-        padding-right: 10px;
-    }
-    .high-score {
-        font-size: 60px;
-        position: absolute;
-        bottom: 30px;
-        left: 2%;
-        pointer-events: none;
-        border-top: 2px solid black;
-        border-right: 2px solid black;
-        padding-left: 10px;
-        padding-top: 10px;
-        padding-right: 10px;
-        -webkit-text-stroke: 2px rgb(0, 0, 0);
-        -webkit-text-fill-color: rgb(255, 255, 255);
-    }
-    .my-time-text {
-        font-size: 30px;
-        pointer-events: none;
-        -webkit-text-stroke: 1px rgb(0, 0, 0);
-        -webkit-text-fill-color: rgb(255, 255, 255);
-        animation: shake .2s infinite;
-    }
-    @keyframes shake {
-        10%, 90% {
-            transform: translate3d(-1px, 0, 0);
-        }
-
-        20%, 80% {
-            transform: translate3d(1px, 1px, 0);
-        }
-
-        30%, 50%, 70% {
-            transform: translate3d(-3px, -1px, 0);
-        }
-
-        40%, 60% {
-            transform: translate3d(3px, 0, 0);
-        }
     }
     .home-btn {
         position: fixed;

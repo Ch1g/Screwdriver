@@ -1,5 +1,3 @@
-<div id="user-id" data-user-id="<%= current_user.id %>"></div>
-
 <div class="container-fluid">
 	<div class="row">
 		<!-- fixed sidebar -->
@@ -14,43 +12,7 @@
 	        <!-- games list -->
 		    <div class="games">
 		    	<% Game.all.each do |game| %>
-		    	<!-- gamecard -->
-		    	<div class="card no-outline gamecard" id="card_<%= game.id %>" onclick="showModal(this)" data-toogle="popover" title="<%= game.title %>" data-content="<%= game.description %>" style="background: url(https://picsum.photos/330/103);"></div>
-		    	<!-- end gamecard -->
-		    	<!-- modal window -->
-		    	<div class="native-modal" id="modal_<%= game.id %>">
-		    		<div class="native-modal-content">
-		    			<!-- modal header -->
-			    		<div class="native-modal-header">
-			    			<span class="native-close" id="close_<%= game.id %>" onclick="closeModal(this)">&times;</span>
-			    			<h2 class="mb-0"><%= game.title %></h2>
-			    		</div>
-			    		<!-- modal game description -->
-		    			<div class="native-modal-description">
-			    			<button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapse_1" aria-expanded="false" aria-controls="collapseExample">
-			    				Описание
-							</button>	
-			    			<div class="collapse" id="collapse_<%= game.id %>">
-			    				<div class="card card-body">
-								    <%= game.description %>
-								</div>
-			    			</div>
-		    			</div>
-		    			<!-- modal room cards -->
-		    			<% game.game_rooms.each do |room| %>
-			    		<div class="native-modal-body">
-			    			<div class="room-cards">
-			    				<a class="card no-outline" href="/game_room/<%= room.id %>">
-			    					Комната №<%= room.id %><br>
-			    					Участников: 999
-			    				</a	>
-			    			</div>
-			    		</div>
-			    		<% end %>
-			    		<!-- end modal room cards -->
-		    		</div>
-		    	</div>
-		    	<!-- end of modal window -->
+		    		<%= render 'landing/games_list', game: game %>
 		    	<% end %>
 		    </div>
 	  	</div>
