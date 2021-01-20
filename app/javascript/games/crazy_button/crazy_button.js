@@ -1,12 +1,12 @@
 import gameRoomChannel from '../../channels/game_room_channel';
 
 // game starter
-window.startCrazyBtn = function () {
+window.startCrazyBtn = function (username) {
 	// variables declaring
 	const crazyButton = document.getElementById('crazyButton');
 	const homeBtn = document.querySelector('.home-btn');
 
-	// polymorphic creating function for connectionObject
+	// polymorphic function for connectionObject
 	window.gameRoomChannel.received = function (data) {
 		let offset = JSON.parse(data.render_data);
 		goCrazy(offset.left, offset.top);

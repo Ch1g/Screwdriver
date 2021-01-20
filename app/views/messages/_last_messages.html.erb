@@ -1,0 +1,13 @@
+<% Message.includes(:user).last(50).each do |message| %>
+	<div class="message mb-1  <%= 'me' if message.user == current_user %>">
+		<div class="content-container">
+			<div class="content">
+				<%= message.content %>
+			</div>
+			<div class="meta">
+				<%= message.user.username %>
+				<%= message.created_at.strftime("%r") %>
+			</div>
+		</div>
+	</div>
+<% end %>

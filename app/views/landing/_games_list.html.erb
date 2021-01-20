@@ -1,40 +1,42 @@
-<!-- gamecard -->
-<div class="card no-outline gamecard" id="card_<%= game.id %>" onclick="showModal(this)" data-toogle="popover" title="<%= game.title %>" data-content="<%= game.description %>" style="background: url(https://picsum.photos/330/103);"></div>
-<!-- end gamecard -->
-<!-- modal window -->
-<div class="native-modal" id="modal_<%= game.id %>">
-	<div class="native-modal-content">
-		<!-- modal header -->
-			<div class="native-modal-header">
-				<span class="native-close" id="close_<%= game.id %>" onclick="closeModal(this)">&times;</span>
-				<h2 class="mb-0"><%= game.title %></h2>
-			</div>
-		<!-- modal-window gameroom section -->
-			<div class="native-modal-body">
-				<button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapse_1" aria-expanded="false" aria-controls="collapseExample">
-					Описание
-				</button>
-				<div class="collapse" id="collapse_<%= game.id %>">
-					<div class="card card-body">
-					    <%= game.description %>
+<% Game.all.includes(:game_rooms).each do |game| %>
+	<!-- gamecard -->
+	<div class="card no-outline gamecard" id="card_<%= game.id %>" onclick="showModal(this)" data-toogle="popover" title="<%= game.title %>" data-content="<%= game.description %>" style="background: url(https://picsum.photos/330/103);"></div>
+	<!-- end gamecard -->
+	<!-- modal window -->
+	<div class="native-modal" id="modal_<%= game.id %>">
+		<div class="native-modal-content">
+			<!-- modal header -->
+				<div class="native-modal-header">
+					<span class="native-close" id="close_<%= game.id %>" onclick="closeModal(this)">&times;</span>
+					<h2 class="mb-0"><%= game.title %></h2>
+				</div>
+			<!-- modal-window gameroom section -->
+				<div class="native-modal-body">
+					<button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapse_1" aria-expanded="false" aria-controls="collapseExample">
+						Описание
+					</button>
+					<div class="collapse" id="collapse_<%= game.id %>">
+						<div class="card card-body">
+						    <%= game.description %>
+						</div>
+					</div>
+					<!-- c -->
+					<%= form_with(model: GameRoom.new, local: true) do |form| %>
+						<%= hidden_field_tag :game, game.id %>
+						<%= hidden_field_tag :default_render, game.default_render %>
+					    <%= form.submit "Новая комната", class: 'btn btn-secondary' %>
+					<% end %>
+
+					<div class="room-cards">
+						<% game.game_rooms.each do |room| %>
+							<a class="card no-outline" href="<%= game_room_url(room) %>">
+								Комната №<%= room.id %><br>
+								Участников: <%= room.members_quantity %>
+							</a	>
+						<% end %>
 					</div>
 				</div>
-				<!-- c -->
-				<%= form_with(model: GameRoom.new, local: true) do |form| %>
-					<%= hidden_field_tag :game, game.id %>
-					<%= hidden_field_tag :default_render, game.default_render %>
-				    <%= form.submit "Новая комната", class: 'btn btn-secondary' %>
-				<% end %>
-
-				<div class="room-cards">
-					<% game.game_rooms.each do |room| %>
-						<a class="card no-outline" href="<%= game_room_url(room) %>">
-							Комната №<%= room.id %><br>
-							Участников: <%= room.members_quantity %>
-						</a	>
-					<% end %>
-				</div>
-			</div>
+		</div>
 	</div>
-</div>
-<!-- end of modal window -->
+	<!-- end of modal window -->
+<% end %>

@@ -11,9 +11,7 @@
 	        </div>
 	        <!-- games list -->
 		    <div class="games">
-		    	<% Game.all.each do |game| %>
-		    		<%= render 'landing/games_list', game: game %>
-		    	<% end %>
+	    		<%= render 'landing/games_list' %>
 		    </div>
 	  	</div>
 	  	<!-- end of fixed sidebar -->
@@ -23,10 +21,8 @@
 				<nav class="navbar navbar-dark bg-secondary">
 					<span class="navbar-brand">Чатрума</span>
 				</nav>
-				<div id="messages">
-					<% Message.last(50).each do |message| %>
-						<%= render 'messages/message', message: message %>
-					<% end %>
+				<div id="messages">					
+					<%= render 'messages/last_messages'%>
 				</div>
 				<div class="chat-box">
 					<%= render 'messages/form', message: Message.new %>
