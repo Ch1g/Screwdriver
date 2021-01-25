@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
 
   def current_user
     return @current_user if @current_user.present?
-    
     if session[:user_id].present?
       @current_user = User.find(session[:user_id])
     else
@@ -16,7 +15,8 @@ class ApplicationController < ActionController::Base
 
   def room_data(room_id)
     room = GameRoom.find(room_id)
-    { render_data: JSON.parse(room.render_data), players_score: JSON.parse(room.players_score) }
+    { render_data: JSON.parse(room.render_data),
+      players_score: JSON.parse(room.players_score) }
   end
 
 end
